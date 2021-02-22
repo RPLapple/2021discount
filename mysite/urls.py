@@ -14,8 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
+# 用来进行跳转, 默认是永久重定向（301），可以直接在urls.py中使用，非常方便：
+from django.views.generic.base import RedirectView
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('discount.urls')),
+    # path(r'favicon.ico', RedirectView.as_view(url=r'/images/favicon.ico')),
 ]
