@@ -1,0 +1,55 @@
+{% include 'header.html' %}
+{% load static %}
+<br>
+<br>
+<br>
+<div style="margin-left: 15%">
+    <h3>{{request.user}} Info</h3>
+<!--{#    一樣要從SQL把資料loop進來   #}-->
+    <div>
+        <form action="mailto:test@cs.nthu.edu.tw" encType=text/plain method="post"></form>
+                    {% csrf_token %}
+                    {{ form.as_p }}
+            <p>Email Address:<input name="email" size=12 maxlength=20 value="your email"> (we will send you the weekely discount)</p>
+            <p>Phone Number：<input name="phone_number" type="" size=12 maxlength=20 value="your number"></p>
+            <p>Change Password:</p>
+                <input name="old_password" type="" size=12 maxlength=20 value="old password">
+                <input name="new_password" type="" size=12 maxlength=20 value="new password">
+                <input name="confirm_new_password" type="" size=12 maxlength=20 value="confirmed"></p>
+            <p>Cards I have (multiple): </p><p>
+                <input name="payback" type=checkbox value="payback" checked> Payback
+                <input name="american_express" type=checkbox value="american_express" checked> American Express
+                <input name="amazon" type=checkbox value="amazon" checked> Amazon Points
+                <input name="vivid" type=checkbox value="vivid" checked> Vivid
+                <input name="curve" type=checkbox value="curve" checked> Curve</p>
+            <p><input type="submit" value="submit" method="post"> <input type="reset" value="reset" method=""></p>
+        </form>
+        <hr>
+    </div>
+</div>
+<br>
+<br>
+<br>
+
+{% include 'footer.html' %}
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function (event) {
+         navActivePage();
+      });
+    </script>
+    <script type="text/javascript" src="{% static 'supermarket/main.70a66962.js' %}"></script>
+</body>
+
+</html>
+
+<!--{#extends 代表繼承 base.html (剛剛的導覽列那些）#}-->
+<!--{#接下來這些div就是bootstrap的一些classes，因為本篇不是bootstrap的文章，就不多做介紹了，之後以會再做bootstrap的簡易教學#}-->
+<!--{#{%block body%} 的意思就是編輯剛剛我們 base.html裡面那個區塊（在裡面加東西）。後面記得要加 {%endblock%}#}-->
+<!--{#{%for%}{%endfor%} 就是回圈 在裡面可以去從一個陣列單獨的一個一個東西抓出來。#}-->
+<!--{#像這邊我們的例子就是要從 object_list 這裡抓東西 （這就是我們的文章列表）#}-->
+<!--{#注意這邊 object_list 是固定的字眼，如果想要把它換成 posts之類的，要到views裡面設定 （可以查一下）#}-->
+<!--{#這有點像 javascript 的 map 或是 forEach 那種概念#}-->
+<!--{#之後我們就是呈現一張卡片，在標題的地方呈現 {{ post.title }} 他就會換成文章標題#}-->
+<!--{#content一樣的道理#}-->
+<!--{#而在 <a href=”/{{ post.id}}”> 這邊我們是要讓網址變成 href=”/1″ href=”/2″ 這樣子，讓我們連到 等一下的detail頁面#}-->

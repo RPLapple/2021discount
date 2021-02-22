@@ -1,0 +1,28 @@
+{% include 'header.html' %}
+{% load static %}
+<br>
+<br>
+<br>
+<div style="margin-left: 15%">
+    <h3>Register You Account</h3>
+    <form action="" method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="register">
+    </form>
+</div>
+<br>
+<br>
+<br>
+
+{% include 'footer.html' %}
+
+<script>
+  document.addEventListener("DOMContentLoaded", function (event) {
+     navActivePage();
+  });
+</script>
+
+<script type="text/javascript" src="{% static 'supermarket/main.70a66962.js' %}"></script>
+</body>
+
+</html>
