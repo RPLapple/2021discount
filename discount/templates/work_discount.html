@@ -39,17 +39,29 @@
             <tbody>
             {% if items %}
                 {% if request.user.is_authenticated %}
-                    {% for text in items %}
+                    {% for text in items%}
                     <tr>
                         <td><input name="select" type=checkbox value="select"></td>
-                        <td>{{text.supermarket_id.name}}</td>
-                        <td>{{text.name}}</td>
+                        {% for super in super_name %}
+                            {% if text.supermarket_id == super.id %}
+                        <td>{{ super.name}}</td>
+                            {% endif %}
+                        {% endfor %}
+                        <td>{{ text.name}}</td>
                         <td><img src="{% static 'discount/images/img.jpg' %}" style="width:32px"  alt=""/></td>
                         <td>{{ text.discount }}</td>
                         <td>{{ text.new_price }}</td>
                         <td>{{ text.old_price }}</td>
-                        <td>{{ text.card_id.name}}</td>
-                        <td>{{ text.extra_discount_id.name}}</td>
+                        {% for card in card_name %}
+                            {% if text.card_id == card.id %}
+                        <td>{{ card.name }}</td>
+                            {% endif %}
+                        {% endfor %}
+                        {% for ed in extra_dis %}
+                            {% if text.extra_discount_id == ed.id %}
+                        <td>{{ ed.discount}}</td>
+                            {% endif %}
+                        {% endfor %}
                     </tr>
                     {% endfor %}
                 {% else %}

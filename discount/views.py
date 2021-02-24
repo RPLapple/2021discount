@@ -4,7 +4,7 @@ from django.http.response import JsonResponse
 from django.contrib import auth
 from django.contrib.auth.forms import UserCreationForm
 from datetime import datetime
-from .models import Product, Card
+from .models import Product, Supermarket, Card, ExtraDiscount
 
 
 # Create your views here.
@@ -25,7 +25,10 @@ def works(request):
 # discount page
 def work_discount(request):
     items = Product.objects.values()
-    context = {'items': items, }
+    super_name = Supermarket.objects.values()
+    card_name = Card.objects.values()
+    extra_dis = ExtraDiscount.objects.values()
+    context = {'items': items, 'super_name': super_name, 'card_name': card_name, 'extra_dis': extra_dis, }
     return render(request, 'work_discount.html', context)
 
 
