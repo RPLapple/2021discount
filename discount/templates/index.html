@@ -1,0 +1,33 @@
+{% include 'header.html' %}
+{% load static %}
+<!-- Add your site or app content here -->
+  <div class="hero-full-container background-image-container white-text-container" style="background-image: url({% static 'supermarket/images/space.jpg' %});">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="hero-full-wrapper">
+            <div class="text-content">
+              <h1>milet desu<br>
+                <span id="typed-strings">
+                  <span>a JP singer</span>
+                </span>
+                <span id="typed"></span>
+              </h1>
+              <em>{{ current_time }}</em>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% include 'footer.html' %}
+
+<script>
+  document.addEventListener("DOMContentLoaded", function (event) {
+     type();
+     movingBackgroundImage();
+  });
+</script>
+
+<script type="text/javascript" src="{% static 'supermarket/main.70a66962.js' %}"></script>
