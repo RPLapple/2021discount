@@ -4,7 +4,7 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12">
-        <img src="{% static 'supermarket/images/work001-01.jpg' %}" class="img-responsive" alt="">
+        <img src="{% static 'discount/images/work001-01.jpg' %}" class="img-responsive" alt="">
         <div class="card-container">
           <div class="text-center">
             <h1 class="h2">SuperMarket Discount</h1>
@@ -37,52 +37,33 @@
                 </tr>
             </thead>
             <tbody>
-            {% if qs %}
+            {% if items %}
                 {% if request.user.is_authenticated %}
-                    {% for kauf in qs %}
+                    {% for text in items %}
                     <tr>
-                    {#   待辦：如何精簡一堆條件？How to reduce so many conditions?    #}
-                    {#  skip the raw that include N/A, nur, 1/2 PREIS, PROBIERPREIS #}
-                    {% if kauf.small_title == 'N/A' or '-' in kauf.small_title or '1/2 PREIS' in kauf.small_title or kauf.discount == 'N/A' or kauf.discount == '1/2 PREIS' or kauf.discount == 'PROBIERPREIS' or kauf.new_prive == 'nur' or kauf.new_prive == 'N/A' %}
-                    {% else %}
-                    {# 待辦：用randint把超市loop進來     #}
                         <td><input name="select" type=checkbox value="select"></td>
-                        <td>SuperName</td>
-                        <td>
-                            <a href="{{ super.link }}" target="_blank">{{ kauf.small_title }}</a>
-                        </td>
-                        <td><img src="{% static 'supermarket/images/img.jpg' %}" style="width:32px"  alt=""/></td>
-
-                        <td>{{ kauf.discount }}</td>
-                        <td>{{ kauf.new_price }}</td>
-                        <td>{{ kauf.old_price }}</td>
-                   {# 待辦：透過超市核對discount cards % loop出去     #}
-{#                        {% if request.user.is_authenticated %}#}
-                        <td><p>cards</p></td>
-                        <td><p>$back</p></td>
-{#                        {% endif %}#}
+                        <td>{{text.supermarket_id.name}}</td>
+                        <td>{{text.name}}</td>
+                        <td><img src="{% static 'discount/images/img.jpg' %}" style="width:32px"  alt=""/></td>
+                        <td>{{ text.discount }}</td>
+                        <td>{{ text.new_price }}</td>
+                        <td>{{ text.old_price }}</td>
+                        <td>{{ text.card_id.name}}</td>
+                        <td>{{ text.extra_discount_id.name}}</td>
                     </tr>
-                    {% endif %}
                     {% endfor %}
-{#                {% if request.user.is_authenticated %}#}
                 {% else %}
-                 {# |slice:":10" -> if not a member, only shows 10 items 加了之後就直接只顯示10項了！ 超酷XD #}
-                    {% for kauf in qs|slice:":40" %}
+            <!-- |slice:":10" -> if not a member, only shows 16 items-->
+                    {% for text in items|slice:":16" %}
                     <tr>
-                        {% if kauf.small_title == 'N/A' or '-' in kauf.small_title or '1/2 PREIS' in kauf.small_title or kauf.discount == 'N/A' or kauf.discount == '1/2 PREIS' or kauf.discount == 'PROBIERPREIS' or kauf.new_prive == 'nur' or kauf.new_prive == 'N/A' %}
-                        {% else %}
                         <td><input name="select" type=checkbox value="select"></td>
-                        <td>SuperName</td>
-                        <td>
-                            <a href="{{ super.link }}" target="_blank">{{ kauf.small_title }}</a>
-                        </td>
-                        <td><img src="{% static 'supermarket/images/img.jpg' %}" style="width:32px"  alt=""/></td>
-                        <td>{{ kauf.discount }}</td>
-                        <td>{{ kauf.new_price }}</td>
-                        <td>{{ kauf.old_price }}</td>
-
+                        <td>{{text.supermarket_id.name}}</td>
+                        <td>{{text.name}}</td>
+                        <td><img src="{% static 'discount/images/img.jpg' %}" style="width:32px"  alt=""/></td>
+                        <td>{{ text.discount }}</td>
+                        <td>{{ text.new_price }}</td>
+                        <td>{{ text.old_price }}</td>
                     </tr>
-                        {% endif %}
                     {% endfor %}
             </tbody>
                     <a href="/accounts/login/" title="" ><button>more products</button></a>
@@ -93,22 +74,21 @@
         </div>
       </div>
 
-
       <div class="col-md-8 col-md-offset-2 section-container-spacer">
         <div class="row">
           <div class="col-xs-12 col-md-6">
-            <img src="{% static 'supermarket/images/work001-02.jpg' %}" class="img-responsive" alt="">
+            <img src="{% static 'discount/images/work001-02.jpg' %}" class="img-responsive" alt="">
             <p>Menphis skyline</p>
           </div>
           <div class="col-xs-12 col-md-6">
-            <img src="{% static 'supermarket/images/work001-03.jpg' %}" class="img-responsive" alt="">
+            <img src="{% static 'discount/images/work001-03.jpg' %}" class="img-responsive" alt="">
             <p>Menphis skyline</p>
           </div>
         </div>
       </div>
 
       <div class="col-xs-12">
-        <img src="{% static 'supermarket/images/work001-04.jpg' %}" class="img-responsive" alt="">
+        <img src="{% static 'discount/images/work001-04.jpg' %}" class="img-responsive" alt="">
       </div>
 
     </div>
@@ -122,18 +102,8 @@
          navActivePage();
       });
     </script>
-    <script type="text/javascript" src="{% static 'supermarket/main.70a66962.js' %}"></script>
+    <script type="text/javascript" src="{% static 'discount/main.70a66962.js' %}"></script>
 </body>
 
 </html>
 
-<!--{#extends 代表繼承 base.html (剛剛的導覽列那些）#}-->
-<!--{#接下來這些div就是bootstrap的一些classes，因為本篇不是bootstrap的文章，就不多做介紹了，之後以會再做bootstrap的簡易教學#}-->
-<!--{#{%block body%} 的意思就是編輯剛剛我們 base.html裡面那個區塊（在裡面加東西）。後面記得要加 {%endblock%}#}-->
-<!--{#{%for%}{%endfor%} 就是回圈 在裡面可以去從一個陣列單獨的一個一個東西抓出來。#}-->
-<!--{#像這邊我們的例子就是要從 object_list 這裡抓東西 （這就是我們的文章列表）#}-->
-<!--{#注意這邊 object_list 是固定的字眼，如果想要把它換成 posts之類的，要到views裡面設定 （可以查一下）#}-->
-<!--{#這有點像 javascript 的 map 或是 forEach 那種概念#}-->
-<!--{#之後我們就是呈現一張卡片，在標題的地方呈現 {{ post.title }} 他就會換成文章標題#}-->
-<!--{#content一樣的道理#}-->
-<!--{#而在 <a href=”/{{ post.id}}”> 這邊我們是要讓網址變成 href=”/1″ href=”/2″ 這樣子，讓我們連到 等一下的detail頁面#}-->

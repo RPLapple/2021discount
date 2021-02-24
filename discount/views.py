@@ -24,7 +24,9 @@ def works(request):
 
 # discount page
 def work_discount(request):
-    return render(request, 'work_discount.html')
+    items = Product.objects.values()
+    context = {'items': items, }
+    return render(request, 'work_discount.html', context)
 
 
 # 這邊要再看一次
