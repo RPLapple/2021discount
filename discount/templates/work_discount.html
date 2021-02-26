@@ -66,10 +66,14 @@
                     {% endfor %}
                 {% else %}
             <!-- |slice:":10" -> if not a member, only shows 16 items-->
-                    {% for text in items|slice:":16" %}
+                    {% for text in items|slice:":10" %}
                     <tr>
                         <td><input name="select" type=checkbox value="select"></td>
-                        <td>{{text.supermarket_id.name}}</td>
+                        {% for super in super_name %}
+                            {% if text.supermarket_id == super.id %}
+                        <td>{{ super.name}}</td>
+                            {% endif %}
+                        {% endfor %}
                         <td>{{text.name}}</td>
                         <td><img src="{% static 'discount/images/img.jpg' %}" style="width:32px"  alt=""/></td>
                         <td>{{ text.discount }}</td>
