@@ -1,8 +1,9 @@
 from django.test import TestCase, RequestFactory             # test_unitttest, RequestFactory
 from django.contrib.auth.models import AnonymousUser, User   # test_unitttest, RequestFactory
-from mysite.discount.views import work_discount, myaccount, register        # test_unitttest, RequestFactory
-from django.views.generic import TemplateView
+from discount.views import work_discount, myaccount, register        # test_unitttest, RequestFactory
 
+
+# Create your tests here.
 # rrrrrrr something weired, cuz even change the password, it still working
 # 這邊好像哪裡怪怪的，因為如果把密碼改掉，還是顯示no issues =.=
 class SimpleTest(TestCase):
@@ -23,13 +24,51 @@ class SimpleTest(TestCase):
 
 # 不過看起來沒有得測, 可以考慮測試頁面,
 # 比如說沒登入是否可以看到某些資訊:
-# https://docs.djangoproject.com/en/3.1/topics/testing/advanced/#the-request-factory
-class WorkDiscountViews(TemplateView):
-    template_name = '/work_discount.html'
+# # https://docs.djangoproject.com/en/3.1/topics/testing/advanced/#the-request-factory
+# Functional Test?
+class HomePageTest(TestCase):
 
-    def get_context_data(self, **kwargs):
-        kwargs['h2'] = 'SuperMarket Discount'
-        return super().get_context_data(**kwargs)
+    # get url http://127.0.0.1:8000 and template link correct
+    # if response status is equal to 200
+    def test_uses_home_template(self):
+        response = self.client.get('')
+        self.assertTemplateUsed(response, 'index.html')
+        self.assertEqual(response.status_code, 200)
+
+    def test_about_page_template(self):
+        response = self.client.get('/about')
+        self.assertTemplateUsed(response, 'about.html')
+        self.assertEqual(response.status_code, 200)
+
+    def test_contact_page_template(self):
+        response = self.client.get('/contact')
+        self.assertTemplateUsed(response, 'contact.html')
+        self.assertEqual(response.status_code, 200)
+
+    def test_works_page_template(self):
+        response = self.client.get('/works')
+        self.assertTemplateUsed(response, 'works.html')
+        self.assertEqual(response.status_code, 200)
+
+    # 登入與沒登入
+    def test_work_discount_page_template(self):
+        response = self.client.get('/work_discount')
+        self.assertTemplateUsed(response, 'work_discount.html')
+        self.assertEqual(response.status_code, 200)
+
+    # AssertionError: No templates used to render the response
+    # these 2 part no need to test because it's build in system?
+    # 看起來這兩個部分 django內建所以不用測？
+    # def test_register_page_template(self):
+    #     response = self.client.get('/register')
+    #     self.assertTemplateUsed(response, 'register.html')
+    #
+    # def test_loggin_page_template(self):
+    #     response = self.client.get('/account/login')
+    #     self.assertTemplateUsed(response, 'registration/login.html')
+
+
+
 
 
 # 测试工具的默认行为是在任何名字以 test 开头的文件中找到所有的测试用例
