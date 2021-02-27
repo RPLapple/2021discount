@@ -6,20 +6,20 @@ from discount.views import work_discount, myaccount, register        # test_unit
 # Create your tests here.
 # rrrrrrr something weired, cuz even change the password, it still working
 # 這邊好像哪裡怪怪的，因為如果把密碼改掉，還是顯示no issues =.=
-class SimpleTest(TestCase):
-
-    def setUp(self):  # every test needs access to the request factory
-        self.factory = RequestFactory()
-        self.user = User.objects.create_user(
-            username='YYLRPL', password='qazokm123'
-        )
-
-    def test_details(self):             # Create an instance of a GET request
-        request = self.factory.get('/work_discount')  # Recall that middleware are not supported.
-        request.user = self.user        # can simulate a logged-in user by setting request.user manually
-        request.user = AnonymousUser()  # test my_view() as if it were deployed at /customer/details
-        response = work_discount(request)
-        self.assertEqual(response.status_code, 200)
+# class SimpleTest(TestCase):
+#
+#     def setUp(self):  # every test needs access to the request factory
+#         self.factory = RequestFactory()
+#         self.user = User.objects.create_user(
+#             username='YYLRPL', password='qazokm123'
+#         )
+#
+#     def test_details(self):             # Create an instance of a GET request
+#         request = self.factory.get('/work_discount')  # Recall that middleware are not supported.
+#         request.user = self.user        # can simulate a logged-in user by setting request.user manually
+#         request.user = AnonymousUser()  # test my_view() as if it were deployed at /customer/details
+#         response = work_discount(request)
+#         self.assertEqual(response.status_code, 200)
 
 
 # 不過看起來沒有得測, 可以考慮測試頁面,

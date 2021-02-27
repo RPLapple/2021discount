@@ -26,11 +26,17 @@ class NewVisitorTest(unittest.TestCase):
         header_text = self.browser.find_element_by_tag_name('h1').text
         self.assertIn('milet desu', header_text)
 
-    def test_AnonymousUser_in_work_discount_page(self):
+    def test_anonymous_user_in_work_discount_page(self):
         self.browser.get('http://127.0.0.1:8000/work_discount')
         # only show 10 items 是否只show 10樣東西
         # loggin 登入會員
         # back to same page and should present cards and extra discount 再回到該頁面，是否有顯示卡名和特特惠
+
+    def test_user_in_work_discount_page(self):
+        pass
+
+    def test_user_loggeout(self):
+        pass
 
 
 if __name__ == '__main__':

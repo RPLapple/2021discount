@@ -28,13 +28,13 @@ class Migration(migrations.Migration):
                 ('discount', models.FloatField()),
             ],
         ),
-        migrations.CreateModel(
-            name='MemberPoint',
-            fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('point', models.FloatField()),
-            ],
-        ),
+        # migrations.CreateModel(
+        #     name='MemberPoint',
+        #     fields=[
+        #         ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+        #         ('point', models.FloatField()),
+        #     ],
+        # ),
         migrations.CreateModel(
             name='Supermarket',
             fields=[
