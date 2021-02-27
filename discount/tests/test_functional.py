@@ -1,19 +1,28 @@
-from django.test import TestCase
+from django.test import TestCase, RequestFactory
+from django.contrib.auth.models import AnonymousUser, User
 from selenium import webdriver
-# from selenium.common.exceptions import WebDriverException
+from selenium.common.exceptions import WebDriverException
 from selenium.webdriver.common.keys import Keys
+from discount.views import work_discount
+
 import time
 import unittest
+
+
+from selenium.webdriver.support import ui
 
 MAX_WAIT = 4
 
 
-class NewVisitorTest(unittest.TestCase):
+class NewVisitorTest(TestCase):
 
     # automatically start a page
     def setUp(self):
         chromedriver = './chromedriver'
         self.browser = webdriver.Chrome(chromedriver)
+        self.factory = RequestFactory()
+        self.user = User.objects.create_user(
+            username='YYLRPL', password='qazokm123')
 
     # automatically close a page when test finished
     def tearDown(self):
@@ -21,21 +30,54 @@ class NewVisitorTest(unittest.TestCase):
 
     # the browser has been opened for twice?
     # 頁面開了兩次 安捏乾丟？還是functional test我應該放在同一個def 不拆開寫？
-    def test_from_home_page(self):
-        self.browser.get('http://127.0.0.1:8000/')
-        header_text = self.browser.find_element_by_tag_name('h1').text
-        self.assertIn('milet desu', header_text)
+    # def test_from_home_page(self):
+    #     self.browser.get('http://127.0.0.1:8000/')
+    #     header_text = self.browser.find_element_by_tag_name('h1').text
+    #     self.assertIn('milet desu', header_text)
 
-    def test_anonymous_user_in_work_discount_page(self):
-        self.browser.get('http://127.0.0.1:8000/work_discount')
-        # only show 10 items 是否只show 10樣東西
-        # loggin 登入會員
-        # back to same page and should present cards and extra discount 再回到該頁面，是否有顯示卡名和特特惠
+    # def test_about_page_template(self):
+    #     response = self.client.get('/about')
+    #     self.assertTemplateUsed(response, 'about.html')
+    #     self.assertEqual(response.status_code, 200)
 
-    def test_user_in_work_discount_page(self):
+    # def test_contact_page_template(self):
+    #     response = self.client.get('/contact')
+    #     self.assertTemplateUsed(response, 'contact.html')
+    #     self.assertEqual(response.status_code, 200)
+
+    def test_anonymous_user_log_in(self):
+        # self.browser.get('http://127.0.0.1:8000/account/login')
+        # name_inputbox = self.browser.find_element_by_xpath('//*[@id="id_username"]')
+        # name_inputbox.send_keys('YYLRPL')
+        # name_inputbox.send_keys(Keys.ENTER)
+        # time.sleep(1)
+        # password_inputbox = self.browser.find_element_by_id('//*[@id="id_password"]')
+        # password_inputbox.send_keys('qazokm123')
+        # password_inputbox.send_keys(Keys.ENTER)
+        # time.sleep(4)
         pass
 
-    def test_user_loggeout(self):
+    # if anonymous user can only see 10 items in work_discount page
+    def test_anonymous_user_in_work_discunt_page(self):
+        request = self.factory.get('/work_discount')
+        request.user = AnonymousUser()
+        response = work_discount(request)
+        response = MyView.as_view()(request)
+        self.assertEqual(response.status_code, 200)
+
+    # # if user can see 10+ items & card, extra discount in work_discount page
+    def test_authentic_user_in_work_discount_page(self):
+        # response = self.client.get('/work_discount')
+        request = self.factory.get('/work_discount')
+        request.user = self.user
+        # self.assertTemplateUsed(request, 'work_discount.html')
+        response = work_discount(request)
+        self.assertContains(request, 'Card')
+        self.assertContains(request, 'Cash Back')
+        self.assertEqual(response.status_code, 200)
+
+    # user log out
+    def test_authentic_user_log_out(self):
         pass
 
 

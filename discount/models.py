@@ -36,6 +36,7 @@ class MemberPoint(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateField(default=datetime.datetime(1970, 1, 1, 0, 0, 0))
 
+    # 每個日期獲得的點數不同 尾數1*1 尾數2*2
     # def get_point_by_date(self):
     #     if self.date < date(2021, 1, 1):
     #         return self.point * 2
