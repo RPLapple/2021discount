@@ -5,7 +5,8 @@ from django.conf.urls.static import static
 from django.contrib.auth import views as view_auth
 from discount.views import register, index
 
-# 連接網址
+# urls
+# note: cyber security maybe can use uuid system?
 urlpatterns = [
     path('', index),
     path('works', views.works, name='works'),
