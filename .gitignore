@@ -1,0 +1,4 @@
+# if need to upload an execute .py file, ignore *.pyc, or it can not find .py
+#*.pyc
+__pycache__
+staticfiles
