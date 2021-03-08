@@ -89,4 +89,5 @@ def login(request):
 # 這邊要再看一次
 def logout(request):
     auth.logout(request)
-    return render(request, 'index.html')
+    # return render(request, 'index.html')
+    return render(request, 'registration/logged_out.html', locals())
