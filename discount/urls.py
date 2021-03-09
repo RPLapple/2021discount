@@ -17,7 +17,7 @@ urlpatterns = [
     # 這啥= =?
     path('table', views.table, name='table'),
     path('accounts/register/', register),
-    path('accounts/login/', view_auth.LoginView.as_view(), name='login'),
-    path('accounts/logout', view_auth.LogoutView.as_view(template_name='index.html'), name='logout'),
+    path('registration/login/', view_auth.LoginView.as_view(), name='login'),
+    path('registration/logged_out', view_auth.LogoutView.as_view(template_name='index.html'), name='logout'),
     path('accounts/profile/', index),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

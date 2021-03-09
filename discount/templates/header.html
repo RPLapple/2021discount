@@ -41,9 +41,9 @@
           <li><a href="/contact" title="">Contact</a></li>
         {% if request.user.is_authenticated %}
           <li><a href="/myaccount">My Account</a></li>
-          <li><a href="/accounts/logout/">{{request.user}} Log Out</a></li>
+          <li><a href="/registration/logged_out">{{request.user}} Log Out</a></li>
         {% else %}
-          <li><a href="/accounts/login/">Log In</a></li>
+          <li><a href="/registration/login/">Log In</a></li>
           <li><a href="/accounts/register/">Register</a></li>
         {% endif %}
         </ul>
