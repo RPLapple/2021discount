@@ -48,7 +48,7 @@ jobs:
           name: Authorizing gcloud
           command: |
             echo $GCP_KEY > gcloud-service-key.json
-            gcloud auth activate-service-account shining-booth-306619@appspot.gserviceaccount.com --key-file=gcloud-service-key.json
+            gcloud auth activate-service-account shining-booth-306619@appspot.gserviceaccount.com --key-file=-
             gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
             gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
 
