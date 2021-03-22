@@ -24,11 +24,11 @@ jobs:
           paths:
             - "venv"
 
-      - run:            # 所有測試跑起來
-          name: Running tests
-          command: |
-            . venv/bin/activate
-            python3 manage.py test
+#      - run:            # 所有測試跑起來
+#          name: Running tests
+#          command: |
+#            . venv/bin/activate
+#            python3 manage.py test
       - store_artifacts:
           path: test-reports/
           destination: python_app
