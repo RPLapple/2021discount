@@ -131,6 +131,9 @@ STATICFILES_DIRS = [
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+# 接受各個瀏覽網頁的host
+ALLOWED_HOSTS = ['*']
+
 # trytrysee
 ACCOUNT_ACTIVATION_DAYS = 7
 
