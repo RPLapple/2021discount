@@ -49,8 +49,8 @@ jobs:
           command: |
             echo $GCP_KEY > gcloud-service-key.json
             gcloud auth activate-service-account --key-file=gcloud-service-key.json
-            gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
-            gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
+#            gcloud --quiet config set project ${GOOGLE_PROJECT_ID}
+#            gcloud --quiet config set compute/zone ${GOOGLE_COMPUTE_ZONE}
 
       - run:                  # 執行 GAE 的 deploy 指令
           name: Deploy to App Engine
