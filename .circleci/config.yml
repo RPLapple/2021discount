@@ -42,7 +42,7 @@ jobs:
     docker:                # 採用官方的 docker image 可以省麻煩
       - image: google/cloud-sdk
     executor: python/default
-    steps:	               # 加 checkout 讓 deploy 這個 job 也能拿到目錄下的檔案
+    steps:                 # 加 checkout 讓 deploy 這個 job 也能拿到目錄下的檔案
       - checkout
       - run:                 # 授權 gcloud，注意 CircleCI 的環境變數
           name: Authorizing gcloud
