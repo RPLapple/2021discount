@@ -88,7 +88,7 @@ if os.getenv('GAE_APPLICATION', None):
         'default': {
             'ENGINE': 'django.db.backends.mysql',
             'NAME': 'discount',
-            'HOST': '/couldsql/shining-booth-306619:asia-east1:discount2021',
+            'HOST': '/cloudsql/shining-booth-306619:asia-east1:discount2021',
             'USER': 'discount2021',
             'PASSWORD': 'discount2021',
         }
