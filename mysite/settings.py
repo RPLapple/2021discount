@@ -148,6 +148,8 @@ STATICFILES_DIRS = [
 
 # for Heroku
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # 接受各個瀏覽網頁的host
