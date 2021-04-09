@@ -91,3 +91,16 @@ def logout(request):
     auth.logout(request)
     # return render(request, 'index.html')
     return render(request, 'registration/logged_out.html', locals())
+
+
+# 0405 留言板功能 再考慮一下怎麼新增和連接
+# def leave_message(request):
+#     if request.method == 'POST':
+#         username = request.POST.get('username', '')
+#         password = request.POST.get('password', '')
+#         if username == '123' and password == '123':
+#             # return HttpResponse('login success')
+#             return HttpResponseRedirect('/event_manage/')
+#         else:
+#             return render(request, 'sign_index.html', {'error': 'username or password error'})
+#         return render(request, 'sign_index.html', {'error': 'username or password error'})  # 這個書上還沒給你寫咧=_=

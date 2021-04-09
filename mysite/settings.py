@@ -83,7 +83,9 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 #     }
 # }
 
-if os.getenv('GAE_APPLICATION', None):
+# [START db_setup]
+# if os.getenv('GAE_APPLICATION', None):
+if os.getenv('SERVER_SOFTWARE', '').startswith('Google App Engine'):
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
@@ -100,6 +102,7 @@ else:
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
+# [END db_setup]
 
 
 # Password validation

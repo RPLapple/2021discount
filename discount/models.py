@@ -8,24 +8,26 @@ import sqlite3
 # supermarkets' name
 
 
+# Link card id & user id together
+class AuthUserCard(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    card = models.ForeignKey(Card, on_delete=models.CASCADE)
+
+
 class Supermarket(models.Model):
     name = models.CharField(max_length=40)
+    create_time = models.DateTimeField(auto_now=True)  # 创建时间（自动获取当前时间
 
 
 # the card with special discount
 class Card(models.Model):
     name = models.CharField(max_length=40)
+    create_time = models.DateTimeField(auto_now=True)  # 创建时间（自动获取当前时间）
 
 
 # different discount %
 class ExtraDiscount(models.Model):
     discount = models.FloatField()
-
-
-# Link card id & user id together
-class AuthUserCard(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    card = models.ForeignKey(Card, on_delete=models.CASCADE)
 
 
 # 如果有額外做delivery system 然後可以會員卡集點
@@ -35,6 +37,7 @@ class MemberPoint(models.Model):
     point = models.FloatField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateField(default=datetime.datetime(1970, 1, 1, 0, 0, 0))
+    create_time = models.DateTimeField(auto_now=True)  # 创建时间（自动获取当前时间
 
     # 每個日期獲得的點數不同 尾數1*1 尾數2*2
     # def get_point_by_date(self):
@@ -53,6 +56,7 @@ class Product(models.Model):
     old_price = models.FloatField()
     card = models.ForeignKey(Card, on_delete=models.CASCADE)
     extra_discount = models.ForeignKey(ExtraDiscount, on_delete=models.CASCADE)
+    create_time = models.DateTimeField(auto_now=True)  # 创建时间（自动获取当前时间
 
 
 def scrap_info_from_super_market(self):
