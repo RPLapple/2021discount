@@ -15,19 +15,19 @@ from selenium.webdriver.support import ui
 MAX_WAIT = 4
 
 
-# class NewVisitorTest(TestCase):
-#
-#     # automatically start a page
-#     def setUp(self):
-#         chromedriver = './chromedriver'
-#         self.browser = webdriver.Chrome(chromedriver)
-#         self.factory = RequestFactory()
-#         self.user = User.objects.create_user(
-#             username='YYLRPL', password='qazokm123')
-#
-#     # automatically close a page when test finished
-#     def tearDown(self):
-#         self.browser.quit()
+class NewVisitorTest(TestCase):
+
+    # automatically start a page
+    def setUp(self):
+        chromedriver = './chromedriver'
+        self.browser = webdriver.Chrome(chromedriver)
+        self.factory = RequestFactory()
+        self.user = User.objects.create_user(
+            username='YYLRPL', password='qazokm123')
+
+    # automatically close a page when test finished
+    def tearDown(self):
+        self.browser.quit()
 #
 #     # the browser has been opened for twice?
 #     # 頁面開了兩次 安捏乾丟？還是functional test我應該放在同一個def 不拆開寫？
@@ -105,5 +105,5 @@ MAX_WAIT = 4
 #     inputbox.send_keys('Buy peacock feathers')
 
 
-if __name__ == '__main__':
-    unittest.main(warnings='ignore')
+# if __name__ == '__main__':
+#     unittest.main(warnings='ignore')

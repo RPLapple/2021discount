@@ -14,7 +14,12 @@
                 </span>
                 <span id="typed"></span>
               </h1>
-              <em>{{ current_time }}</em>
+              <em>{% now "jS F Y H:i" %}</em>
+              {% if request.user.is_authenticated %}
+                <p>{{request.user}} You have logged in</p>
+              {% else %}
+                <p>You haven't <a href="/registration/login/">login</a></p>
+              {% endif %}
             </div>
           </div>
         </div>

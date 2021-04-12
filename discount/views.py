@@ -3,18 +3,12 @@ from django.http import HttpResponseRedirect
 from django.http.response import JsonResponse
 from django.contrib import auth
 from django.contrib.auth.forms import UserCreationForm
-from datetime import datetime
 from .models import Product, Supermarket, Card, ExtraDiscount
 
 
 # Create your views here.
-# urls.py那邊的 等等要刪掉
-# from discount.views import register, index
-# homepage/indexpage
 def index(request):
-    return render(request, 'index.html', {
-        'current_time': str(datetime.now()),
-    })
+    return render(request, 'index.html')
 
 
 # all projects
@@ -90,8 +84,7 @@ def login(request):
 def logout(request):
     auth.logout(request)
     # return render(request, 'index.html')
-    return render(request, 'registration/logged_out.html', locals())
-
+    return render(request, 'index.html', locals())
 
 # 0405 留言板功能 再考慮一下怎麼新增和連接
 # def leave_message(request):
