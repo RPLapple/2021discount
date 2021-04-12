@@ -30,11 +30,12 @@ class MemberPointAdmin(admin.ModelAdmin):
 
 
 class SupermarketAdmin(admin.ModelAdmin):
-    list_display = ['name', 'create_time']
+    list_display = ['name', 'location', 'create_time']
 
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = ['supermarket', 'name', 'discount', 'old_price', 'card', 'extra_discount', 'create_time']
+    search_fields = ['name']
 
 
 admin.site.register(AuthUserCard, AuthUserCardAdmin)

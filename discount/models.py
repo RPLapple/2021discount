@@ -4,8 +4,19 @@ from django.db import models
 from django.contrib.auth.models import User
 
 import sqlite3
+
+
 # Create your models here.
 # supermarkets' name
+
+
+# the card with special discount
+class Card(models.Model):
+    name = models.CharField(max_length=40)
+    create_time = models.DateTimeField(auto_now=True)  # 创建时间（自动获取当前时间）
+
+    def __str__(self):
+        return self.name
 
 
 # Link card id & user id together
@@ -14,20 +25,12 @@ class AuthUserCard(models.Model):
     card = models.ForeignKey(Card, on_delete=models.CASCADE)
 
 
-class Supermarket(models.Model):
-    name = models.CharField(max_length=40)
-    create_time = models.DateTimeField(auto_now=True)  # 创建时间（自动获取当前时间
-
-
-# the card with special discount
-class Card(models.Model):
-    name = models.CharField(max_length=40)
-    create_time = models.DateTimeField(auto_now=True)  # 创建时间（自动获取当前时间）
-
-
 # different discount %
 class ExtraDiscount(models.Model):
     discount = models.FloatField()
+
+    # def __str__(self):
+    #     return self.str(discount)
 
 
 # 如果有額外做delivery system 然後可以會員卡集點
@@ -39,12 +42,14 @@ class MemberPoint(models.Model):
     date = models.DateField(default=datetime.datetime(1970, 1, 1, 0, 0, 0))
     create_time = models.DateTimeField(auto_now=True)  # 创建时间（自动获取当前时间
 
-    # 每個日期獲得的點數不同 尾數1*1 尾數2*2
-    # def get_point_by_date(self):
-    #     if self.date < date(2021, 1, 1):
-    #         return self.point * 2
-    #     else:
-    #         return self.point
+
+class Supermarket(models.Model):
+    name = models.CharField(max_length=40)
+    location = models.CharField(max_length=40, default='Berlin')
+    create_time = models.DateTimeField(auto_now=True)  # 创建时间（自动获取当前时间
+
+    def __str__(self):
+        return self.name
 
 
 # All Products
@@ -58,18 +63,9 @@ class Product(models.Model):
     extra_discount = models.ForeignKey(ExtraDiscount, on_delete=models.CASCADE)
     create_time = models.DateTimeField(auto_now=True)  # 创建时间（自动获取当前时间
 
+    # def __str__(self):
+    #     return '%s %s %s' % (self.supermarket, self.card, self.extra_discount)
+
 
 def scrap_info_from_super_market(self):
     pass
-
-
-
-
-
-
-
-
-
-
-
-
