@@ -29,9 +29,6 @@ class AuthUserCard(models.Model):
 class ExtraDiscount(models.Model):
     discount = models.FloatField()
 
-    # def __str__(self):
-    #     return self.str(discount)
-
 
 # 如果有額外做delivery system 然後可以會員卡集點
 # 先不寫進去，如果很閒再弄=.=
@@ -40,13 +37,13 @@ class MemberPoint(models.Model):
     point = models.FloatField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateField(default=datetime.datetime(1970, 1, 1, 0, 0, 0))
-    create_time = models.DateTimeField(auto_now=True)  # 创建时间（自动获取当前时间
+    create_time = models.DateTimeField(auto_now=True)
 
 
 class Supermarket(models.Model):
     name = models.CharField(max_length=40)
     location = models.CharField(max_length=40, default='Berlin')
-    create_time = models.DateTimeField(auto_now=True)  # 创建时间（自动获取当前时间
+    create_time = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.name
@@ -61,11 +58,15 @@ class Product(models.Model):
     old_price = models.FloatField()
     card = models.ForeignKey(Card, on_delete=models.CASCADE)
     extra_discount = models.ForeignKey(ExtraDiscount, on_delete=models.CASCADE)
-    create_time = models.DateTimeField(auto_now=True)  # 创建时间（自动获取当前时间
-
-    # def __str__(self):
-    #     return '%s %s %s' % (self.supermarket, self.card, self.extra_discount)
+    create_time = models.DateTimeField(auto_now=True)
 
 
-def scrap_info_from_super_market(self):
-    pass
+class ContactPost(models.Model):
+    email = models.EmailField()
+    subject = models.TextField()
+    content = models.TextField()
+    create_time = models.DateTimeField(auto_now=True)
+
+
+# def scrap_info_from_super_market(self):
+#     pass

@@ -35,7 +35,7 @@ class SupermarketAdmin(admin.ModelAdmin):
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = ['supermarket', 'name', 'discount', 'old_price', 'card', 'extra_discount', 'create_time']
-    search_fields = ['name']
+    search_fields = ['supermarket', 'name', 'discount', 'old_price', 'card', 'extra_discount', 'create_time']
 
 
 admin.site.register(AuthUserCard, AuthUserCardAdmin)

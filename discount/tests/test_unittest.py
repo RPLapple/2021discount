@@ -39,42 +39,47 @@ class HtmlPageTest(TestCase):
 
 
 class LoginActionTest(TestCase):
-    def setUp(self):
-        pass
-
     def test_login_action_username_password_null(self):
-        pass
+        test_data = {'username': '', 'password': ''}
+        response = self.client.post('/registration/login/', data=test_data)
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b"This field is required", response.content)
 
     def test_login_action_username_password_error(self):
-        pass
+        test_data = {'username': 'YYL', 'password': ''}
+        response = self.client.post('/registration/login/', data=test_data)
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b"This field is required", response.content)
 
     def test_login_action_success(self):
-        pass
+        test_data = {'username': 'YYL', 'password': 'qazokm123'}
+        response = self.client.post('/registration/login/', data=test_data)
+        self.assertEqual(response.status_code, 200)
 
 
 class RegisterTest(TestCase):
-    def setUp(self):
-        pass
-
     def test_register_action_username_password_null(self):
-        pass
+        test_data = {'username': '', 'password': ''}
+        response = self.client.post('/accounts/register/', data=test_data)
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b"This field is required", response.content)
 
     def test_register_action_username_password_error(self):
+        test_data = {'username': 'QQQ', 'password': 'qazokm', 'password2': 'qazokm'}
+        response = self.client.post('/accounts/register/', data=test_data)
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b"This password is too short", response.content)
+
+    def test_register_action_success(self):
         pass
 
-    def test_register_action_sucess(self):
-        pass
 
-
-class AdminPageTest(TestCase):
-    def setUp(self):
-        pass
-
-    def test_products_filter_no_item(self):
-        pass
-
-    def test_products_filter_with_item_name(self):
-        pass
-
-    def test_products_filter_with_supermarket_name(self):
-        pass
+# class AdminPageTest(TestCase):
+#     def test_products_filter_no_item(self):
+#         pass
+#
+#     def test_products_filter_with_item_name(self):
+#         pass
+#
+#     def test_products_filter_with_supermarket_name(self):
+#         pass

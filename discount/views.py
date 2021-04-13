@@ -4,6 +4,7 @@ from django.http.response import JsonResponse
 from django.contrib import auth
 from django.contrib.auth.forms import UserCreationForm
 from .models import Product, Supermarket, Card, ExtraDiscount
+from datetime import datetime
 
 
 # Create your views here.
@@ -47,6 +48,14 @@ def about(request):
 
 
 def contact(request):
+    datalist =[]
+    if request.method == "POST":
+        email = request.POST.get('email', None)
+        subject = request.POST.get('subject', None)
+        content_text = request.POST.get('content_text', None)
+        time = datetime.now()
+        with open('contact.txt', 'a+') as f:
+            f.write("{}--{}--{}--{}\n".format(email, subject, content_text, time.strftime("%Y-%m-%d %H:%M:%S")))
     return render(request, 'contact.html')
 
 
@@ -60,7 +69,7 @@ def register(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            return HttpResponseRedirect('/account/login')
+            return HttpResponseRedirect('/registration/login')
     else:
         form = UserCreationForm()
     return render(request, 'register.html', locals())
