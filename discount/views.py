@@ -48,7 +48,7 @@ def about(request):
 
 
 def contact(request):
-    datalist =[]
+    datalist = []
     if request.method == "POST":
         email = request.POST.get('email', None)
         subject = request.POST.get('subject', None)
@@ -56,7 +56,7 @@ def contact(request):
         time = datetime.now()
         with open('contact.txt', 'a+') as f:
             f.write("{}--{}--{}--{}\n".format(email, subject, content_text, time.strftime("%Y-%m-%d %H:%M:%S")))
-    return render(request, 'contact.html')
+    return render(request, 'contact.html', {'data': datalist})
 
 
 def myaccount(request):

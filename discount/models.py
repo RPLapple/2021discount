@@ -68,5 +68,6 @@ class ContactPost(models.Model):
     create_time = models.DateTimeField(auto_now=True)
 
 
+
 # def scrap_info_from_super_market(self):
 #     pass
