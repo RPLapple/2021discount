@@ -1,9 +1,15 @@
 import datetime
 from datetime import date
+from urllib import request
+
 from django.db import models
 from django.contrib.auth.models import User
 
-import sqlite3
+import sqlite3 as lite
+
+con = lite.connect('db.sqlite3')
+cur = con.cursor()
+sql = "INSERT INTO discount_contactpost (`email`, `subject`, `content`, `creat_time`)"
 
 
 # Create your models here.
@@ -66,6 +72,30 @@ class ContactPost(models.Model):
     subject = models.TextField()
     content = models.TextField()
     create_time = models.DateTimeField(auto_now=True)
+
+
+def contact():
+    if request.method == "POST":
+        email = request.POST.get('email', None)
+        subject = request.POST.get('subject', None)
+        content = request.POST.get('content_text', None)
+        create_time = datetime.now()
+
+        post = ContactPost()
+        post.email = email
+        post.subject = subject
+        post.content = content
+        post.create_time = create_time
+        post.save()
+
+        contact_post = [email, subject, content, create_time]
+        try:
+            cur.execute(sql, contact_post)  # 執行
+        except Exception as e:
+            print(e)
+            con.rollback()
+    con.commit()  # 真的存進去
+    con.close()  # 資料庫連結關閉
 
 
 
