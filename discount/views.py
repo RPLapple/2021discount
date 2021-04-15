@@ -58,29 +58,7 @@ class ContactView(TemplateView):
             form.save()
             return render(request, 'index.html')
         else:
-            return render(request, 'contact.html')
-
-        #     form.save()
-        #     email = form.cleaned_data['post']
-        #     subject = form.cleaned_data['post']
-        #     content = form.cleaned_data['post']
-        #     form = ContactForm()
-        #     return redirect('contact:contact')
-        #
-        # args = {'form': form, 'email': email, 'subject': subject, 'content': content}
-        # return render(request, self.template_name, args)
-
-
-# return render(request, 'contact.html')
-#     datalist = []
-#     if request.method == "POST":
-#         email = request.POST.get('email', None)
-#         subject = request.POST.get('subject', None)
-#         content_text = request.POST.get('content_text', None)
-#         time = datetime.now()
-#         with open('contact.txt', 'a+') as f:
-#             f.write("{}--{}--{}--{}\n".format(email, subject, content_text, time.strftime("%Y-%m-%d %H:%M:%S")))
-#     return render(request, 'contact.html', {'data': datalist})
+            return render(request, 'contact.html', locals())
 
 
 def myaccount(request):

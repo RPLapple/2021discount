@@ -71,7 +71,23 @@ class RegisterTest(TestCase):
         self.assertIn(b"This password is too short", response.content)
 
     def test_register_action_success(self):
-        pass
+        test_data = {'username': 'Alice', 'password': 'qazokm123', 'password2': 'qazokm123'}
+        response = self.client.post('/accounts/register/', data=test_data)
+        self.assertEqual(response.status_code, 200)
+
+
+class ContactMessageTest(TestCase):
+    def test_email_error(self):
+        test_data = {'email': '', 'subject': 'subject', 'content': 'content'}
+        response = self.client.post('/contact', data=test_data)
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b"This field is required", response.content)
+
+    def test_email_subject_content_null(self):
+        test_data = {'email': '', 'subject': '', 'content': ''}
+        response = self.client.post('/contact', data=test_data)
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b"This field is required", response.content)
 
 
 # class AdminPageTest(TestCase):
