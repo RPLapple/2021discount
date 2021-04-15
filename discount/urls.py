@@ -3,7 +3,7 @@ from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as view_auth
-from discount.views import register, index
+from .views import register, index, ContactView
 
 # urls
 # note: cyber security maybe can use uuid system?
@@ -12,7 +12,7 @@ urlpatterns = [
                   path('works', views.works, name='works'),
                   path('work_discount', views.work_discount, name='work_discount'),
                   path('about', views.about, name='about'),
-                  path('contact', views.contact, name='contact'),
+                  path('contact', ContactView.as_view(), name='contact'),
                   path('myaccount', views.myaccount, name='myaccount'),
                   # 這啥= =?
                   path('table', views.table, name='table'),

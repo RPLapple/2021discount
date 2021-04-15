@@ -1,10 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from django.http.response import JsonResponse
 from django.contrib import auth
 from django.contrib.auth.forms import UserCreationForm
 from .models import Product, Supermarket, Card, ExtraDiscount
-from datetime import datetime
+from django.views.generic import TemplateView
+from .forms import ContactForm
 
 
 # Create your views here.
@@ -27,9 +28,6 @@ def work_discount(request):
     return render(request, 'work_discount.html', context)
 
 
-# 這邊要再看一次
-# table是用來幹嘛的＝＝？
-# show 資料在額外頁面
 def table(request):
     data = Product.objects.values(
         'supermarket__name',
@@ -47,8 +45,33 @@ def about(request):
     return render(request, 'about.html')
 
 
-def contact(request):
-    return render(request, 'contact.html')
+class ContactView(TemplateView):
+    template_name = 'contact.html'
+
+    def get(self, request):
+        form = ContactForm()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, 'index.html')
+        else:
+            return render(request, 'contact.html')
+
+        #     form.save()
+        #     email = form.cleaned_data['post']
+        #     subject = form.cleaned_data['post']
+        #     content = form.cleaned_data['post']
+        #     form = ContactForm()
+        #     return redirect('contact:contact')
+        #
+        # args = {'form': form, 'email': email, 'subject': subject, 'content': content}
+        # return render(request, self.template_name, args)
+
+
+# return render(request, 'contact.html')
 #     datalist = []
 #     if request.method == "POST":
 #         email = request.POST.get('email', None)

@@ -69,34 +69,9 @@ class Product(models.Model):
 
 class ContactPost(models.Model):
     email = models.EmailField()
-    subject = models.TextField()
-    content = models.TextField()
+    subject = models.CharField(max_length=200)
+    content = models.CharField(max_length=200)
     time = models.DateTimeField(auto_now=True)
-
-
-def contact():
-    if request.method == "POST":
-        email = request.POST.get('email', None)
-        subject = request.POST.get('subject', None)
-        content = request.POST.get('content', None)
-        time = datetime.now()
-
-        post = ContactPost()
-        post.email = email
-        post.subject = subject
-        post.content = content
-        post.create_time = time
-        post.save()
-
-        contact_post = [email, subject, content, time]
-        try:
-            cur.execute(sql, contact_post)  # 執行
-        except Exception as e:
-            print(e)
-            con.rollback()
-    con.commit()  # 真的存進去
-    con.close()  # 資料庫連結關閉
-
 
 
 # def scrap_info_from_super_market(self):
