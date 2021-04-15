@@ -54,7 +54,7 @@
                         <td>{{ text.old_price }}</td>
                         {% for card in card_name %}
                             {% if text.card_id == card.id %}
-                        <td>{{ card.name }}</td>
+                        <td id="card">{{ card.name }}</td>
                             {% endif %}
                         {% endfor %}
                         {% for ed in extra_dis %}
@@ -82,7 +82,7 @@
                     </tr>
                     {% endfor %}
             </tbody>
-                    <a href="/registration/login/" title="" ><button>more products</button></a>
+                    <a href="/registration/login/" id="more"><button>more</button></a>
                 {% endif %}
             {% endif %}
           </table>
