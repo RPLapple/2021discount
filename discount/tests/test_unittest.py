@@ -78,10 +78,10 @@ class RegisterTest(TestCase):
 
 class ContactMessageTest(TestCase):
     def test_email_error(self):
-        test_data = {'email': '', 'subject': 'subject', 'content': 'content'}
+        test_data = {'email': '@', 'subject': 'subject', 'content': 'content'}
         response = self.client.post('/contact', data=test_data)
         self.assertEqual(response.status_code, 200)
-        self.assertIn(b"This field is required", response.content)
+        self.assertIn(b"Enter a valid email address", response.content)
 
     def test_email_subject_content_null(self):
         test_data = {'email': '', 'subject': '', 'content': ''}
@@ -90,12 +90,3 @@ class ContactMessageTest(TestCase):
         self.assertIn(b"This field is required", response.content)
 
 
-# class AdminPageTest(TestCase):
-#     def test_products_filter_no_item(self):
-#         pass
-#
-#     def test_products_filter_with_item_name(self):
-#         pass
-#
-#     def test_products_filter_with_supermarket_name(self):
-#         pass
