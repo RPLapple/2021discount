@@ -1,16 +1,7 @@
-from django.http import HttpResponse, response, request
-from django.test import TestCase, RequestFactory
-from django.contrib.auth.models import AnonymousUser, User
+from django.test import TestCase
 from selenium import webdriver
-from selenium.common.exceptions import WebDriverException
-from selenium.webdriver.common.keys import Keys
-from discount.views import work_discount
 
 import time
-import unittest
-
-
-from selenium.webdriver.support import ui
 
 MAX_WAIT = 4
 
