@@ -1,5 +1,9 @@
 # Discounts in 1
 
+### Links
+Top area are general information of whole project, you may be interest in [Database Focus]() or [CI/CD Focus]().
+
+
 **Target Reader**<br>
 Anyone who interest in learning to code.
 
@@ -61,3 +65,9 @@ Once the storage found the data, it will response to the API
 API will response to the client with the final result.
 
 ![image](https://github.com/RPLapple/2021discount/blob/master/%E5%85%A8%E5%9C%96.png?raw=true)
+
+
+## Database Focus
+
+
+## CI/CD Focus
