@@ -10,7 +10,7 @@ jobs:
   build-and-test:      # 第一個 job，負責執行`測試`
     docker:
       - image: circleci/python:3.7
-#      - image: circleci/mysql:5.7
+      - image: circleci/mysql:5.7
         environment:
           MYSQL_DATABASE: discount
           MYSQL_ROOT_HOST: "%"
