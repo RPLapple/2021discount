@@ -64,10 +64,20 @@ Once the storage found the data, it will response to the API
 **9. API (App Engine) provide information to client**<br>
 API will response to the client with the final result.
 
-![image](https://github.com/RPLapple/2021discount/blob/master/%E5%85%A8%E5%9C%96.png?raw=true)
+
+![image](picsForReadme/全圖.png)
 
 
 ## Database Focus
 
 
 ## CI/CD Focus
+
+1. Connect to the DB, create a instance in GCP SQL, it may ask you to give a permission on API. <br>
+2. Select a suitable database zone
+![image](picsForReadme/01SQL.png)
+<br>
+3. Add the instance ID to setting.py (Django file) 
+![image](picsForReadme/02執行個體名稱.png)
+![image](picsForReadme/03setting.png)
+<br>
