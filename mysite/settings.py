@@ -82,7 +82,7 @@ if os.getenv('SERVER_SOFTWARE', '').startswith('Google App Engine'):
         'default': {
             'ENGINE': 'django.db.backends.mysql',
             'NAME': 'discount',
-            'HOST': '/cloudsql/shining-booth-306619:asia-east1:discount2021',
+            'HOST': '/cloudsql/maximal-quanta-306619:europe-west3:discount2021',
             'USER': 'discount2021',
             'PASSWORD': 'discount2021',
         }
