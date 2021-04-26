@@ -35,6 +35,7 @@ jobs:
       - run:            # 所有測試跑起來
           name: Running test
           command: |
+            . venv/bin/activate
             python manage.py test
 
       - store_artifacts:
