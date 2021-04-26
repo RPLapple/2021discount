@@ -25,26 +25,17 @@ jobs:
           command: |
             python3 -m venv venv
             . venv/bin/activate
-            pip install -r requirements.txt
+            pip3 install -r requirements.txt
 
       - save_cache:     # 為了增加 build 的速度，所設定的暫存
           key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
           paths:
             - "venv"
 
-      - run:
-          name: Install
-          command: |
-            pip install django~=3.1.7
-
       - run:            # 所有測試跑起來
           name: Running enviroment
           command: |
             . venv/bin/activate
-
-      - run: # 所有測試跑起來
-          name: Running tests
-          command: |
             python3 manage.py test
 
       - store_artifacts:
