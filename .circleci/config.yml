@@ -32,11 +32,11 @@ jobs:
           paths:
             - "venv"
 
-      - run:            # 所有測試跑起來
-          name: Running enviroment
-          command: |
-            . venv/bin/activate
-            python manage.py test
+#      - run:            # 所有測試跑起來
+#          name: Running enviroment
+#          command: |
+#            . venv/bin/activate
+#            python manage.py test
 
       - store_artifacts:
           path: test-reports/
