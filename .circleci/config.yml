@@ -30,13 +30,12 @@ jobs:
       - save_cache:     # 為了增加 build 的速度，所設定的暫存
           key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
           paths:
-            - "ssp"
+            - "venv"
 
       - run:            # 所有測試跑起來
           name: Running enviroment
           command: |
-            . ssp/bin/activate
-            cd ssp/mysite
+            . venv/bin/activate
             python manage.py test
 
       - store_artifacts:
