@@ -1,7 +1,7 @@
 # Discounts in 1
 
 ### Links
-Top area are general information of whole project, you may be interest in [Database Focus]() or [CI/CD Focus]().
+Top area are general information of whole project, you may be interest in [Database Focus](https://github.com/RPLapple/2021discount/blob/master/README.md#database-focus) or [CI/CD Focus](https://github.com/RPLapple/2021discount/blob/master/README.md#cicd-focus).
 
 
 **Target Reader**<br>
