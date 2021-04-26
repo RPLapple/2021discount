@@ -5,8 +5,6 @@ from django.conf.urls.static import static
 from django.contrib.auth import views as view_auth
 from .views import register, index, ContactView
 
-# urls
-# note: cyber security maybe can use uuid system?
 urlpatterns = [
                   path('', index),
                   path('works', views.works, name='works'),
@@ -14,7 +12,6 @@ urlpatterns = [
                   path('about', views.about, name='about'),
                   path('contact', ContactView.as_view(), name='contact'),
                   path('myaccount', views.myaccount, name='myaccount'),
-                  # 這啥= =?
                   path('table', views.table, name='table'),
                   path('accounts/register/', register),
                   path('registration/login/', view_auth.LoginView.as_view(), name='login'),

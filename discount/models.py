@@ -1,10 +1,6 @@
 import datetime
-from datetime import date
-from urllib import request
-
 from django.db import models
 from django.contrib.auth.models import User
-
 import sqlite3 as lite
 
 con = lite.connect('db.sqlite3')
@@ -12,14 +8,10 @@ cur = con.cursor()
 sql = "INSERT INTO contactpost (`email`, `subject`, `content`, `time`)"
 
 
-# Create your models here.
-# supermarkets' name
-
-
 # the card with special discount
 class Card(models.Model):
     name = models.CharField(max_length=40)
-    create_time = models.DateTimeField(auto_now=True)  # 创建时间（自动获取当前时间）
+    create_time = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.name
@@ -36,9 +28,6 @@ class ExtraDiscount(models.Model):
     discount = models.FloatField()
 
 
-# 如果有額外做delivery system 然後可以會員卡集點
-# 先不寫進去，如果很閒再弄=.=
-# member's Point
 class MemberPoint(models.Model):
     point = models.FloatField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)

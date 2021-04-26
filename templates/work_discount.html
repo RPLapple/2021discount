@@ -65,7 +65,6 @@
                     </tr>
                     {% endfor %}
                 {% else %}
-            <!-- |slice:":10" -> if not a member, only shows 16 items-->
                     {% for text in items|slice:":10" %}
                     <tr>
                         <td><input name="select" type=checkbox value="select"></td>

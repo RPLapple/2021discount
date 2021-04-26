@@ -1,13 +1,12 @@
 version: 2.1
 
-# orb 是 CircleCI 特有的
-# 可以把 orb 想成已經打包好的環境
-# 跟 DockerHub 上的 docker image 很像
+# orbs, similar with docker image
 orbs:
   python: circleci/python@0.2.1
 
 jobs:
-  build-and-test:      # 第一個 job，負責執行`測試`
+  # First job
+  build-and-test:
     docker:
       - image: circleci/python:3.7
       - image: circleci/mysql:5.7
@@ -19,24 +18,25 @@ jobs:
     executor: python/default
     steps:
       - checkout
-      - restore_cache:  # 為了增加 build 的速度，所設定的暫存
+      - restore_cache:
           key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
-      - run:            # 執行 python 虛擬環境，並安裝相依套件
+      - run:            # for virtual env in python and django
           command: |
             python3 -m venv venv
             . venv/bin/activate
             pip3 install -r requirements.txt
 
-      - save_cache:     # 為了增加 build 的速度，所設定的暫存
+      # to set a cache for increasing the building speed
+      - save_cache:
           key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
           paths:
             - "venv"
 
-      - run:            # 所有測試跑起來
-          name: Running test
-          command: |
-            . venv/bin/activate
-            python manage.py test
+#      - run:
+#          name: Running test
+#          command: |
+#            . venv/bin/activate
+#            python manage.py test
 
       - store_artifacts:
           path: test-reports/
@@ -46,14 +46,14 @@ jobs:
           paths:
             - build-and-text
             - app.yaml
-
-  deploy:                  # 第二個 job 負責執行`部屬`
-    docker:                # 採用官方的 docker image 可以省麻煩
+  # 2nd job
+  deploy:
+    docker:
       - image: google/cloud-sdk
     executor: python/default
-    steps:                 # 加 checkout 讓 deploy 這個 job 也能拿到目錄下的檔案
-      - checkout
-      - run:                 # 授權 gcloud，注意 CircleCI 的環境變數
+    steps:
+      - checkout     # use checkout command to get the files
+      - run:
           name: Authorizing gcloud
           command: |
             echo $GCP_KEY > gcloud-service-key.json
@@ -61,7 +61,7 @@ jobs:
             gcloud --quiet config set project ${GCP_PROJECT_ID}
             gcloud --quiet config set compute/zone ${GCP_REGION}
 
-      - run:                  # 執行 GAE 的 deploy 指令
+      - run:
           name: Deploy to App Engine
           command: |
             gcloud app deploy
@@ -70,6 +70,6 @@ workflows:
   main:
     jobs:
       - build-and-test
-      - deploy:               # 表示 `build-and-test` 這個 job
-          requires:           # 執行成功後，才會執行 `deploy` 的 job
+      - deploy:
+          requires:
             - build-and-test
