@@ -76,8 +76,8 @@ API will response to the client with the final result.
 2. Select a suitable database zone <br>
 <img src="picsForReadme/01SQL.png" width="375" alt="01SQL"/> <br>
 3. Add the instance ID to setting.py (Django file) <br>
-<img src="picsForReadme/02執行個體名稱.png" width="425" alt="02instance"/> <br>
-<img src="picsForReadme/03setting.png" width="425" alt="03"/> <br>
+<img src="picsForReadme/02執行個體名稱.png" width="500" alt="02instance"/>
+<img src="picsForReadme/03setting.png" width="500" alt="03setting"/> <br>
 
 
 
