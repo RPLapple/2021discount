@@ -64,8 +64,7 @@ Once the storage found the data, it will response to the API
 **9. API (App Engine) provide information to client**<br>
 API will response to the client with the final result.
 
-
-![image](picsForReadme/全圖.png)
+<img src="picsForReadme/全圖.png" width="425" alt="all"/> <br>
 
 
 ## Database Focus
@@ -74,10 +73,13 @@ API will response to the client with the final result.
 ## CI/CD Focus
 
 1. Connect to the DB, create a instance in GCP SQL, it may ask you to give a permission on API. <br>
-2. Select a suitable database zone
-![image](picsForReadme/01SQL.png)
-<br>
-3. Add the instance ID to setting.py (Django file) 
-![image](picsForReadme/02執行個體名稱.png)
-![image](picsForReadme/03setting.png)
-<br>
+2. Select a suitable database zone <br>
+<img src="picsForReadme/01SQL.png" width="375" alt="01SQL"/> <br>
+3. Add the instance ID to setting.py (Django file) <br>
+<img src="picsForReadme/02執行個體名稱.png" width="425" alt="02instance"/> <br>
+<img src="picsForReadme/03setting.png" width="425" alt="03"/> <br>
+
+
+
+
+<img src=" " width="375" alt=""/> <br>
