@@ -75,7 +75,7 @@ API will response to the client with the final result.
 ### How to connect to the GCP DB <br>
 1. Connect to the DB, create an instance in GCP SQL, it may ask you to permit API. <br>
 2. Select a suitable database zone <br>
-<img src="picsForReadme/01SQL.png" width="375" alt="01SQL"/> <br>
+<img src="picsForReadme/01SQL.png" height="560" alt="01SQL"/> <br>
 3. Add the instance ID to setting.py (Django file) <br>
 <img src="picsForReadme/02執行個體名稱.png" width="500" alt="02instance"/>
 <img src="picsForReadme/03setting.png" width="500" alt="03setting"/> <br>
@@ -105,4 +105,4 @@ run `gcloud app deploy` again, everything went well and we can link to the targe
 <img src="picsForReadme/dp 055 新增role:appengine.deployer人設.png" width="500" alt="055addRole"/> <br>
 
 7. Here is the [final page](https://maximal-quanta-306619.ey.r.appspot.com/).<br>
-<img src="picsForReadme/dp 07 final page onGCP.png" width="375" alt="07finalpage"/> <br>
+<img src="picsForReadme/dp 07 final page onGCP.png" width="500" alt="07finalpage"/> <br>
