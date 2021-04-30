@@ -69,7 +69,7 @@ API will response to the client with the final result.
 
 ## Database Focus
 ### [Principles of relational database management systems](https://en.wikipedia.org/wiki/Relational_database) <br>
-A relational database means each data will be stored in a field and combined into a table. After all these tables connect to each other, it became a database. It also using a specific database language, [SQL]([https://en.wikipedia.org/wiki/SQL](https://en.wikipedia.org/wiki/SQL)) [The most popular SQL in 2020]([https://learnsql.com/blog/most-popular-sql-databases-2020/](https://learnsql.com/blog/most-popular-sql-databases-2020/)) are Mysql, PostgreSQL, SQLite, Microsoft SQL Server. Usually, people follow [E.F. Codd’s 12 Rules for RDBMS]([https://www.tutorialspoint.com/e-f-codd-s-12-rules-for-rdbms](https://www.tutorialspoint.com/e-f-codd-s-12-rules-for-rdbms)) standards to create a database. <br>
+A relational database means each data will be stored in a field and combined into a table. After all these tables connect to each other, it became a database. It also using a specific database language, [SQL](https://en.wikipedia.org/wiki/SQL), [The most popular SQL in 2020](https://learnsql.com/blog/most-popular-sql-databases-2020/) are Mysql, PostgreSQL, SQLite, Microsoft SQL Server. Usually, people follow [E.F. Codd’s 12 Rules for RDBMS](https://www.tutorialspoint.com/e-f-codd-s-12-rules-for-rdbms) standards to create a database. <br>
 <br>
 Due to this is a small project, I used pre-build database SQLite in Django. It is a light version database, already has built-in functions which suit for a small and not complex project. <br>
 <br>
