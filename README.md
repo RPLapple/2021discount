@@ -91,11 +91,11 @@ In the present database, the most common normal form is 3NF. It was generally ag
 ### [Database indexing](https://en.wikipedia.org/wiki/Database_index) <br>
 
 Database indexing could increase the searching speed. Because once it has Primary Key, it will turn to a [binary tree structure]([https://zhuanlan.zhihu.com/p/86189418](https://zhuanlan.zhihu.com/p/86189418)). This means if there are 1 billion data in a table, and we need only 1, usually, it will search 1 by 1 and the worst situation is, we need to look for it 1 billion times. If we turn this table into a binary try, it means this table will have to distinguish into different layers, it will reduce the searching times as the red path in the picture.<br>
-![indexing]()<br>
+<img src="picsForReadme/binary tree.png" width="600" alt="bt"/><br>
 <br>
 But, due to the binary tree needs to maintain itself in correct status, even we changed only 1 small part, it will break its balance. So every time when a data has been changed, it will need to restructure again to keep everything in the right place.<br>
 
-<img src="picsForReadme/binary tree.png" width="425" alt="bt"/><br>
+
 
 
 ### Object-relational mapper(ORM)frameworks.<br>
