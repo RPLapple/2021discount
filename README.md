@@ -73,9 +73,12 @@ A relational database means each data will be stored in a field and combined int
 <br>
 Due to this is a small project, I used pre-build database SQLite in Django. It is a light version database, already has built-in functions which suit for a small and not complex project. <br>
 <br>
-### Entity-relationship models <br>
+### [Entity-relationship models](https://en.wikipedia.org/wiki/Entity–relationship_model) <br>
 An entity is a thing that exists either physically or logically. For example, this project has a product (physically exist), but a member point would be a concept (logically exist). Usually, we discuss the projects with customers and designers first, to confirm the needs then create a real database.<br>
 <br>
+
+
+
 ### Database normalization and schema optimization <br>
 Database normalization is the process of structuring a database, in accordance with a series of so-called normal forms in order to reduce data redundancy and improve integrity.<br>
 In the present database, the most common normal form is 3NF. It was generally agreed that although having a higher normal form could binding the database better, but it also increases the complexity of data IO. Therefore, people tend to create functions with code to fix this issue. In this database, I tried <br>
@@ -83,21 +86,27 @@ In the present database, the most common normal form is 3NF. It was generally ag
 - 2NF, meet the requirement of 1NF, move the partial dependency column to a different schema and use the Foreign Key to relate different tables.<br>
 - 3NF, meet the requirement of 2NF, each column has no transitive dependency.<br>
 <br>
+<img src="picsForReadme/db01.png" width="425" alt="db01"/><br>
+<img src="picsForReadme/db02.png" width="425" alt="db02"/><br>
+
 ### Database indexing <br>
+
 Database indexing could increase the searching speed. Because once it has Primary Key, it will turn to a [binary tree structure]([https://zhuanlan.zhihu.com/p/86189418](https://zhuanlan.zhihu.com/p/86189418)). This means if there are 1 billion data in a table, and we need only 1, usually, it will search 1 by 1 and the worst situation is, we need to look for it 1 billion times. If we turn this table into a binary try, it means this table will have to distinguish into different layers, it will reduce the searching times as the red path in the picture.<br>
 ![indexing]()<br>
 <br>
 But, due to the binary tree needs to maintain itself in correct status, even we changed only 1 small part, it will break its balance. So every time when a data has been changed, it will need to restructure again to keep everything in the right place.<br>
 
+<img src="picsForReadme/binary tree.png" width="425" alt="bt"/><br>
+
+
 ### Object-relational mapper(ORM)frameworks.<br>
+[An ORM framework is a programming technique for converting data between incompatible type systems using object-oriented programming languages](https://en.wikipedia.org/wiki/Object%E2%80%93relational_mapping). It can hide the SQL into its logic, you only need to use simple language but can create the same table in the database. For example, Django is an ORM framework, if you want to create a product table in the database and contains a supermarket (FK), you only need to go to `models.py` and put<br>
 <br>
-[An ORM framework is a programming technique for converting data between incompatible type systems using object-oriented programming languages](https://en.wikipedia.org/wiki/Object–relational_mapping](https://en.wikipedia.org/wiki/Object%E2%80%93relational_mapping). It can hide the SQL into its logic, you only need to use simple language but can create the same table in the database. For example, Django is an ORM framework, if you want to create a product table in the database and contains a supermarket (FK), you only need to go to `models.py` and put<br>
-<br>
-`class Product(model.Model):
-       supermarket = models.ForeignKey(Supermarket, on_delete=models.CASCADE)`  
+'class Product(model.Model):
+       supermarket = models.ForeignKey(Supermarket, on_delete=models.CASCADE)' 
 But you can still execute SQL through the command-line interface, shell. <br>
 <br>
-![ORM]()
+<img src="picsForReadme/ORM.png" width="425" alt="ORM"/><br>
 
 
 ## CI/CD Focus
