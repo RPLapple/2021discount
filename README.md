@@ -98,8 +98,8 @@ But, due to the binary tree needs to maintain itself in correct status, even we 
 ### [Object-relational mapper(ORM)frameworks](https://en.wikipedia.org/wiki/Object%E2%80%93relational_mapping).<br>
 "An ORM framework is a programming technique for converting data between incompatible type systems using object-oriented programming languages. It can hide the SQL into its logic, you only need to use simple language but can create the same table in the database." For example, Django is an ORM framework, if you want to create a product table in the database and contains a supermarket (FK), you only need to go to `models.py` and put<br>
 <br>
-`class Product(model.Model): <br>
-       supermarket = models.ForeignKey(Supermarket, on_delete=models.CASCADE)` <br>
+`class Product(model.Model): `<br>
+       `supermarket = models.ForeignKey(Supermarket, on_delete=models.CASCADE)` <br>
 But you can still execute SQL through the command-line interface, shell. <br>
 <br>
 <img src="picsForReadme/ORM.png" width="425" alt="ORM"/><br>
