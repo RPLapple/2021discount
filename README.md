@@ -68,7 +68,7 @@ API will response to the client with the final result.
 
 
 ## Database Focus
-### Principles of relational database management systems <br>
+### [Principles of relational database management systems](https://en.wikipedia.org/wiki/Relational_database) <br>
 A relational database means each data will be stored in a field and combined into a table. After all these tables connect to each other, it became a database. It also using a specific database language, [SQL]([https://en.wikipedia.org/wiki/SQL](https://en.wikipedia.org/wiki/SQL)) [The most popular SQL in 2020]([https://learnsql.com/blog/most-popular-sql-databases-2020/](https://learnsql.com/blog/most-popular-sql-databases-2020/)) are Mysql, PostgreSQL, SQLite, Microsoft SQL Server. Usually, people follow [E.F. Codd’s 12 Rules for RDBMS]([https://www.tutorialspoint.com/e-f-codd-s-12-rules-for-rdbms](https://www.tutorialspoint.com/e-f-codd-s-12-rules-for-rdbms)) standards to create a database. <br>
 <br>
 Due to this is a small project, I used pre-build database SQLite in Django. It is a light version database, already has built-in functions which suit for a small and not complex project. <br>
@@ -78,8 +78,7 @@ An entity is a thing that exists either physically or logically. For example, th
 <br>
 
 
-
-### Database normalization and schema optimization <br>
+### [Database normalization and schema optimization](https://en.wikipedia.org/wiki/Database_normalization) <br>
 Database normalization is the process of structuring a database, in accordance with a series of so-called normal forms in order to reduce data redundancy and improve integrity.<br>
 In the present database, the most common normal form is 3NF. It was generally agreed that although having a higher normal form could binding the database better, but it also increases the complexity of data IO. Therefore, people tend to create functions with code to fix this issue. In this database, I tried <br>
 - 1NF, each column has only 1 data and no repeat.<br>
@@ -89,7 +88,7 @@ In the present database, the most common normal form is 3NF. It was generally ag
 <img src="picsForReadme/db01.png" width="425" alt="db01"/><br>
 <img src="picsForReadme/db02.png" width="425" alt="db02"/><br>
 
-### Database indexing <br>
+### [Database indexing](https://en.wikipedia.org/wiki/Database_index) <br>
 
 Database indexing could increase the searching speed. Because once it has Primary Key, it will turn to a [binary tree structure]([https://zhuanlan.zhihu.com/p/86189418](https://zhuanlan.zhihu.com/p/86189418)). This means if there are 1 billion data in a table, and we need only 1, usually, it will search 1 by 1 and the worst situation is, we need to look for it 1 billion times. If we turn this table into a binary try, it means this table will have to distinguish into different layers, it will reduce the searching times as the red path in the picture.<br>
 ![indexing]()<br>
