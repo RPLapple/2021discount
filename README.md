@@ -129,7 +129,7 @@ For example, in this project, may not increase the number of members very often,
 ### How to connect to the GCP DB <br>
 1. Connect to the DB, create an instance in GCP SQL, it may ask you to permit API. <br>
 2. Select a suitable database zone <br>
-<img src="picsForReadme/01SQL.png" height="560" alt="01SQL"/> <br>
+<img src="picsForReadme/SQL.png" height="560" alt="SQL"/> <br>
 3. Add the instance ID to setting.py (Django file) <br>
 <img src="picsForReadme/02執行個體名稱.png" width="500" alt="02instance"/>
 <img src="picsForReadme/03setting.png" width="500" alt="03setting"/> <br>
