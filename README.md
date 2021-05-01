@@ -14,7 +14,10 @@ To provide a simple guide to the very beginner a basic CI/CD process
 Beginner (one person project)
 
 **Softwares**<br>
-Python, SQLite, Django, Github, CircleCI, Google Cloud Platform (GCP)
+free frontend template ["Mashup Templates"](http://www.mashup-template.com/), Python, SQLite, Django, Github, CircleCI, Google Cloud Platform (GCP)
+
+**Made by**
+Yenyu Liu, RPLapple (repositoy owner)
 
 ## Introduction and Overview<br>
 Discounts in 1, is an application for gathering different weekly supermarket discounts into 1 site. It will contain the discount price and percentage information for users. If the user joins as a member, the application will provide extra functions, credit card and rewards app (e.g. payback), to help users save more money.
@@ -23,7 +26,7 @@ Discounts in 1, is an application for gathering different weekly supermarket dis
 This application developed with the below resources. There are many software and framework you can choose from, but here only provide 1 type of instruction.
 
 **Frontend** <br>
-we use a free template from the "Mashup Templates" website. It contains HTML, CSS, and Javascript.
+we use a free template from the ["Mashup Templates"](http://www.mashup-template.com/) website. It contains HTML, CSS, and Javascript.
 
 **Backend** <br>
 Django, Python's libs, is a very powerful framework, it has multifunction to help us from automated testing, database, connecting frontend and backend also to deploy to the cloud system.
