@@ -101,7 +101,28 @@ In the present database, the most common normal form is 3NF. Although having a h
 But you can still execute SQL through the command-line interface, shell. <br>
 <br>
 <img src="picsForReadme/ORM.png" width="425" alt="ORM"/><br>
+<br>
 
+### Securing a databse
+For the Securing a database, in this project, I focused on the admin and member's side of using the database. I used Django pre-build authentication and authorization system, in which only authorized superusers can revise the product data and authorized users can see the full product information. For example, <br>
+
+<img src="picsForReadme/db security.png" width="600" alt="dbsecurity"/><br>
+
+You can create users in the CLI or the admin site to adjust their authorities. <br>
+
+If we dig deeper about securing a database, it will expand to, such as when we receive a message from customer feedback on the contact page. To prevent this type of possibility, in the Django framework, they have a special function on the frontend website `{% csrf_token %}`, which is to send a specific token to the user and renew it after a certain time, so that if someone wants to log in but can't provide this token, the server would ignore this requirement.<br>
+<br>
+
+### Database backup strategies
+For this project, I used `git` as my backup strategy. Because every time when I record my working status, I used `git add .`  and `git commit -m 'xxx' ` for all files. If I want to go back to a specific time, I could check the description and find the right time. But this is because SQLite is already a build-in system in Django, which could update very easily. <br>
+<br>
+In a more complex project, we might need to consider:<br>
+- How often should we backup our database? <br>
+- Should we backup everything or just a part of it? <br>
+- Where should we have our backup? <br>
+<br>
+For example, in this project, may not increase the number of members very often, do we need to back up this part every day? Do we need to back up the discount from last week? No. <br>
+<br>
 
 ## CI/CD Focus
 
