@@ -69,18 +69,18 @@ API will response to the client with the final result.
 
 ## Database Focus
 ### [Principles of relational database management systems](https://en.wikipedia.org/wiki/Relational_database) <br>
-A relational database means each data will be stored in a field and combined into a table. After all these tables connect to each other, it became a database. It also using a specific database language, [SQL](https://en.wikipedia.org/wiki/SQL), [The most popular SQL in 2020](https://learnsql.com/blog/most-popular-sql-databases-2020/) are Mysql, PostgreSQL, SQLite, Microsoft SQL Server. Usually, people follow [E.F. Codd’s 12 Rules for RDBMS](https://www.tutorialspoint.com/e-f-codd-s-12-rules-for-rdbms) standards to create a database. <br>
+"A relational database means each data will be stored in a field and combined into a table".(Wikipedia) After all these tables connect, it became a database. It also using a specific database language, [SQL](https://en.wikipedia.org/wiki/SQL), [The most popular SQL in 2020](https://learnsql.com/blog/most-popular-sql-databases-2020/) are Mysql, PostgreSQL, SQLite, Microsoft SQL Server. Usually, people follow [E.F. Codd’s 12 Rules for RDBMS](https://www.tutorialspoint.com/e-f-codd-s-12-rules-for-rdbms) standards to create a database. <br>
 <br>
-Due to this is a small project, I used pre-build database SQLite in Django. It is a light version database, already has built-in functions which suit for a small and not complex project. <br>
+Due to this is a small project, I used pre-build database SQLite in Django. It is a light version database, already has built-in functions which suit a small and not complex project.<br>
 <br>
 ### [Entity-relationship models](https://en.wikipedia.org/wiki/Entity–relationship_model) <br>
-An entity is a thing that exists either physically or logically. For example, this project has a product (physically exist), but a member point would be a concept (logically exist). Usually, we discuss the projects with customers and designers first, to confirm the needs then create a real database.<br>
+"An entity is a thing that exists either physically or logically" (Wikipedia). For example, in this project, a product physically exists, but membership is logical exists, these could be called entity.<br>
 <br>
 
 
 ### [Database normalization and schema optimization](https://en.wikipedia.org/wiki/Database_normalization) <br>
-"Database normalization is the process of structuring a database, in accordance with a series of so-called normal forms in order to reduce data redundancy and improve integrity." (wikipedia) <br>
-In the present database, the most common normal form is 3NF. It was generally agreed that although having a higher normal form could binding the database better, but it also increases the complexity of data IO. Therefore, people tend to create functions with code to fix this issue. In this database, I tried <br>
+"Database normalization is the process of structuring a database, by a series of so-called normal forms to reduce data redundancy and improve integrity." (Wikipedia)
+In the present database, the most common normal form is 3NF. Although having a higher normal form could better bind the database, it also increases the complexity of data IO. Therefore, people tend to create functions with code to fix this issue. In this database, I tried<br>
 - 1NF, each column has only 1 data and no repeat.<br>
 - 2NF, meet the requirement of 1NF, move the partial dependency column to a different schema and use the Foreign Key to relate different tables.<br>
 - 3NF, meet the requirement of 2NF, each column has no transitive dependency.<br>
@@ -89,14 +89,12 @@ In the present database, the most common normal form is 3NF. It was generally ag
 <img src="picsForReadme/db02.png" width="425" alt="db02"/><br>
 
 ### [Database indexing](https://en.wikipedia.org/wiki/Database_index) <br>
-Database indexing could increase the searching speed once it has Primary Key. It will turn to a [binary tree structure]([https://zhuanlan.zhihu.com/p/86189418](https://zhuanlan.zhihu.com/p/86189418)). This means if there are 1 billion data in a table, and we need only 1, usually, it will search from first one to the end, we will have chance to seach for 1 billion times. If we add the PK, the structure will turn into a binary try, it means the database will distinguish into different layers, it will help to reduce the searching times as the red path in the picture.<br>
+"Database indexing could increase the searching speed once it has Primary Key because once It has PK". (Wikipedia) [binary tree structure]([https://zhuanlan.zhihu.com/p/86189418](https://zhuanlan.zhihu.com/p/86189418)). it will turn into a binary tree structure. With a binary tree, the database will distinguish the data into different layers with a different type. This will help to reduce the searching times as the red path in the picture.
 <img src="picsForReadme/binary tree.png" width="600" alt="bt"/><br>
 <br>
-But, due to the binary tree needs to maintain itself in correct status, even we changed only 1 small part, it will break its balance. So every time when a data has been changed, it will need to restructure again to keep everything in the right place.<br>
-
 
 ### [Object-relational mapper(ORM)frameworks](https://en.wikipedia.org/wiki/Object%E2%80%93relational_mapping).<br>
-"An ORM framework is a programming technique for converting data between incompatible type systems using object-oriented programming languages. It can hide the SQL into its logic, you only need to use simple language but can create the same table in the database." For example, Django is an ORM framework, if you want to create a product table in the database and contains a supermarket (FK), you only need to go to `models.py` and put<br>
+"An ORM framework is a programming technique for converting data between incompatible type systems using object-oriented programming languages. It can hide the SQL into its logic, you only need to use simple language but can create the same table in the database." (Wikipedia) For example, Django is an ORM framework, if you want to create a product table in the database and contains a supermarket (FK), you only need to go to `models.py` and put<br>
 <br>
 `class Product(model.Model): `<br>
        `supermarket = models.ForeignKey(Supermarket, on_delete=models.CASCADE)` <br>
